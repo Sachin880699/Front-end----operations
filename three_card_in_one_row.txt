@@ -1,0 +1,9 @@
+================================baherchya forloop end chya adhi ha code takaycha=======
+
+{% if forloop.counter|divisibleby:3 and not forloop.last %}
+                        </div>
+                        <div class="card-deck">
+                    {% endif %}
+
+==================================================================
+samja jar aplyala 3 card aka row madhe hawe asel tar yane milel
