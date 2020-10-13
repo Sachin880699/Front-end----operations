@@ -1,0 +1,8 @@
+<div class="col-md-2">
+                                                <label class="checkbox-inline">
+                                                
+                                                    <input type="checkbox" name="accommodations_ratings" value="3.0"
+                                                            {% if '3.0' in vendor_info.accommodations_ratings %}
+                                                           checked {% endif %} onclick="return false;"> 3.0
+                                                </label>
+                                            </div>
