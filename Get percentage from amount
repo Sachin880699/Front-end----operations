@@ -1,0 +1,47 @@
+<div class="errorTxt"></div>
+<label for="n_alias" class=" col-xl-8 col-form-label">Cost</label>
+                                        {% if package.cost %}
+                                          <input type="number" class="form-control cost" id="cost" name="cost" onkeyup="calculate()" value="{{ package.cost }}">
+                                        {% else %}
+                                          <input type="number" class="form-control cost" id="cost" name="cost" onkeyup="calculate()">
+                                        {% endif %}
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label for="n_alias" class=" col-xl-8 col-form-label">Discount</label>
+                                        {% if package.discount %}
+                                          <input type="number" class="form-control discountPercentage" id="discountPercentage" name="discountPercentage" onkeyup="calculate()" value="{{ package.discount }}">
+                                        {% else %}
+                                          <input type="number" class="form-control discountPercentage" id="discountPercentage" name="discountPercentage" onkeyup="calculate()">
+                                        {% endif %}
+                                      </div>
+                                      <div class="col-md-3">
+                                        <label for="n_alias" class=" col-xl-8 col-form-label">Total Cost</label>
+                                        {% if package.total_cost %}
+                                          <input type="number" class="form-control total" id="total_cost" name="total_cost" value="{{ package.total_cost }}" onkeyup="calculate()" disabled>
+                                        {% else %}
+                                          <input type="number" class="form-control total" id="total_cost" name="total_cost" value="" onkeyup="calculate()" disabled>
+                                        {% endif %}
+                                        <input type="hidden" id="total_cost_value" name="total_cost_value">
+                                      </div>
+                                      
+                                      
+                                      
+                                      
+                                      
+                                      
+                                      <script type="text/javascript">
+
+  function calculate(){
+  var result = document.getElementById('total_cost');
+  var first = document.getElementById('cost');
+  var second = document.getElementById('discountPercentage');
+  if (first){
+      result.value = first.value;
+  }
+  if (second){
+      discountvalue = first.value/ 100 * second.value;
+      result.value = first.value - discountvalue;
+      document.getElementById("total_cost_value").value = result.value;
+  }
+  }
+</script>
