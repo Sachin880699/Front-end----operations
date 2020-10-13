@@ -1,0 +1,28 @@
+{% if request.path == '/admin_panel/vendor_list' %}
+                    <li class="active">
+                        <a href="{% url 'vendor_list' %}">
+                            <img src="{% static 'front/images/admin_users_sidemenu_inactive.png' %}">
+                            <span>Vendors</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'vendor_list' %}">
+                            <img src="{% static 'front/images/admin_users_sidemenu_inactive.png' %}">
+                            <span>Vendors</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <li class="treeview">
+                        <a href="#">
+                            <img src="{% static 'front/images/packages_sidemenu_inactive.png' %}"> <span>Packages</span>
+                            <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{% url 'package_list' %}"><i class="fa fa-user"></i>Admin Packages</a></li>
+                            <li><a href="{% url 'vendor_packages' %}"><i class="fa fa-circle-o"></i>Vendor Packages</a></li>
+                        </ul>
+                    </li>
