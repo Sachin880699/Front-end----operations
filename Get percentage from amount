@@ -1,4 +1,3 @@
-
 <div class="errorTxt"></div>
 <label for="n_alias" class=" col-xl-8 col-form-label">Cost</label>
                                         {% if package.cost %}
