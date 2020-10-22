@@ -44,4 +44,5 @@
       document.getElementById("total_cost_value").value = result.value;
   }
   }
+  
 </script>
