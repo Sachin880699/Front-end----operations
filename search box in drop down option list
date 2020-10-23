@@ -1,0 +1,29 @@
+        <script src='https://code.jquery.com/jquery-3.2.1.slim.js' type='text/javascript'></script>
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+        
+        <!-- Dropdown -->       
+        <select id='selUser' style='width: 300px;'>
+            <option value='0'>-- Select User --</option>          
+            <option value='1'>Yogesh singh</option>  
+            <option value='2'>Sonarika Bhadoria</option>   
+            <option value='3'>Anil Singh</option>        
+            <option value='4'>Vishal Sahu</option>        
+            <option value='5'>Mayank Patidar</option>        
+            <option value='6'>Vijay Mourya</option>        
+            <option value='7'>Rakesh sahu</option> 
+        </select>   
+
+        
+       
+        <!-- Script -->
+        <script>
+        $(document).ready(function(){
+            
+            // Initialize select2
+            $("#selUser").select2();
+
+            
+        });
+        </script>
