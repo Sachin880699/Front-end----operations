@@ -1,0 +1,16 @@
+
+ First name: <input type="text" class="clear_date" name="fname"><br>
+  Last name: <input type="text" class="clear_date" name="lname"><br>
+
+<input type="checkbox" onclick="disable_date()" > 
+
+<script>
+function disable_date() {
+    var elements = document.getElementsByClassName("clear_date");
+    for (var ii=0; ii < elements.length; ii++) {
+      if (elements[ii].type == "text") {
+        elements[ii].value = "";
+      }
+   }
+}
+</script>
