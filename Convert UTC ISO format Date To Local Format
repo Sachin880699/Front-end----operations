@@ -1,0 +1,17 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+
+
+
+<span style="margin-left: 545px; color: grey; font-size: 15px;" class="date" data-date = "{{ rate_and_review.date|date:'d-m-Y H:i:s' }}"></span><br>
+
+<script>
+    $(".date").each(function() {
+        var rate_and_review = $(this).data("date");
+        console.log(rate_and_review)
+        let rate_and_review_local= moment.utc(rate_and_review,'DD-MM-YYYY HH:mm:ss').local().format("DD/MM/YYYY hh:mm A");
+        $(this).text(rate_and_review_local);
+    });
+</script>
