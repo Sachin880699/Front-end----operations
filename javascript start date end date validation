@@ -1,0 +1,105 @@
+<script type="text/javascript">
+
+  $(document).ready(function () {
+      var date_string = "";
+      var currentdate = new Date();
+      var date = currentdate.getDate();
+      var month = currentdate.getMonth() + 1;
+      var year = currentdate.getFullYear();
+      var hour = currentdate.getHours();
+      var minutes = currentdate.getMinutes();
+
+      if(date < 10){
+          date = "0"+date;
+      }
+      if(month < 10){
+          month = "0"+month;
+      }
+      if(hour < 10){
+          hour = "0"+hour;
+      }
+      if(minutes < 10){
+          minutes = "0"+minutes;
+      }
+      date_string =  year + "-" + month + "-" + date + "T" + hour + ":" + minutes;
+
+      document.getElementById("start_date").min = date_string;
+      document.getElementById("end_date").min = date_string;
+
+      $("#check_offer_code").click(function () {
+          var code = $("#code").val();
+          if(code.length > 3){
+              var request_data = {
+                  'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+                  'code': code
+              };
+
+              $.post("{% url 'offer_check' %}", request_data, function (data) {
+                  data = JSON.parse(data);
+                  console.log(data);
+                  if (data['status'] === true) {
+                      $("#check_offer_code").addClass('btn-danger');
+                      $("#check_offer_code").removeClass('btn-success');
+                      $("#check_offer_code").text('Code already exist');
+                      $("#disable_btn").css({"display": "block", "font-size": "14px", "color": "red"}).text("Please check for the code first");
+                      $("#submit_btn").attr({"disabled": true});
+                      $("#message").css({"display": "block", "font-size": "14px", "color": "red"}).text(data['message']);
+                  }
+                  else{
+                      $("#check_offer_code").removeClass('btn-danger');
+                      $("#check_offer_code").removeClass('btn-warning');
+                      $("#check_offer_code").addClass('btn-success');
+                      $("#check_offer_code").text('Code available');
+                      $("#submit_btn").attr({"disabled": false});
+                      $("#disable_btn").css({"display": "none", "font-size": "14px", "color": "red"}).text("");
+                      $("#message").css({"display": "block", "font-size": "14px", "color": "green"}).text(data['message']);
+                  }
+              });
+          }
+          else{
+              alert("Code must be greater than 4 characters");
+          }
+
+      });
+      $("#code").keyup(function () {
+          $("#check_offer_code").addClass('btn-warning');
+          $("#check_offer_code").removeClass('btn-danger');
+          $("#check_offer_code").removeClass('btn-success');
+          $("#check_offer_code").text('Check Offer Code');
+          $("#disable_btn").css({"display": "block", "font-size": "14px", "color": "red", "float":"left"}).text("Please check for the code first");
+          $("#submit_btn").attr({"disabled": true});
+      });
+      $("#start_date").change(function () {
+          var value = $(this).val();
+          var start_date_selected = new Date(value);
+          date = start_date_selected.getDate();
+          month = start_date_selected.getMonth() + 1;
+          year = start_date_selected.getFullYear();
+          hour = start_date_selected.getHours();
+          minutes = start_date_selected.getMinutes();
+
+          if(date < 10){
+              date = "0"+date;
+          }
+          if(month < 10){
+              month = "0"+month;
+          }
+          if(hour < 10){
+              hour = "0"+hour;
+          }
+          if(minutes < 10){
+              minutes = "0"+minutes;
+          }
+          var end_date_string =  year + "-" + month + "-" + date + "T" + hour + ":" + minutes;
+          $("#end_date").attr({"min": end_date_string})
+      });
+  })
+  </script>
+  
+  
+  
+  
+  
+  
+  <input class="form-control" type="datetime-local" id="start_date" name="start_date" required>
+  <input class="form-control" type="datetime-local" id="end_date" name="end_date" required>
