@@ -1,0 +1,85 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<div id="thumbnail"></div>
+<input type="file" id="upload-file" accept="image/*" />
+
+<style>
+img {
+    width:30%;
+    float: left;
+    
+}
+.closeDiv {
+    width: 20px;
+  height: 21px;
+  background-color: rgb(35, 179, 119);
+  float: left;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 2px 7px rgb(74, 72, 72);
+  text-align: center;
+  margin: 5px;
+}
+.pDiv {
+    float:left;
+    width:100%
+}
+
+</style>
+
+<script>
+jQuery(function ($) {
+    $('div').on('click', '.closeDiv', function () {
+        $(this).prev().remove();
+        $(this).remove();
+        $('#upload-file').val("");
+    });
+    var fileDiv = document.getElementById("upload");
+    var fileInput = document.getElementById("upload-file");
+
+    fileInput.addEventListener("change", function (e) {
+
+        var filesVAR = this.files;
+
+        showThumbnail(filesVAR);
+
+    }, false);
+
+
+
+    function showThumbnail(files) {
+        var file = files[0]
+        var thumbnail = document.getElementById("thumbnail");
+        var pDiv = document.createElement("div");
+        var image = document.createElement("img");
+        var div = document.createElement("div");
+
+
+        pDiv.setAttribute('class', 'pDiv');
+        thumbnail.appendChild(pDiv);
+
+
+        image.setAttribute('class', 'imgKLIK5');
+        pDiv.appendChild(image)
+
+        div.innerHTML = "X";
+        div.setAttribute('class', 'closeDiv');
+        pDiv.appendChild(div)
+
+        image.file = file;
+        var reader = new FileReader()
+        reader.onload = (function (aImg) {
+            return function (e) {
+                aImg.src = e.target.result;
+            };
+        }(image))
+        var ret = reader.readAsDataURL(file);
+        var canvas = document.createElement("canvas");
+        ctx = canvas.getContext("2d");
+        image.onload = function () {
+            ctx.drawImage(image, 100, 100);
+        }
+    }
+});
+</script>
