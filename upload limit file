@@ -1,0 +1,22 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+<input type="file" class="limit_uplod_image" name="image[]" multiple>
+
+
+<script>
+var limit = 5;
+$(document).ready(function(){
+    $('.limit_uplod_image').change(function(){
+        var files = $(this)[0].files;
+        if(files.length > limit){
+            alert("You can select max "+limit+" limit_uplod_image.");
+            $('.limit_uplod_image').val('');
+            return false;
+        }else{
+            return true;
+        }
+    });
+});
+</script>
