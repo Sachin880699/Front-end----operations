@@ -1,0 +1,119 @@
+<head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+   .picture-container {
+   position: relative;
+   cursor: pointer;
+   margin-top: 25px;
+   }
+   .picture input[type="file"] {
+   cursor: pointer;
+   display: block;
+   left: 0;
+   opacity: 0 !important;
+   position: relative;
+   top: -100px;
+   height: 100px;
+   width: 100px;
+   }
+   .picture-src {
+   width: 100%;
+   }
+   .d6_photo-delete {
+   position: relative;
+   top: -210px;
+   left: 83px;
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   background: #d4d4d4;
+   }
+   .d6_photo-delete i {
+   text-align: center;
+   line-height: 30px;
+   padding-left: 9px;
+   color: #ff0000;
+   cursor: pointer;
+   }
+   .picture{
+   float: left;
+   margin-right: 20px;
+   }
+</style>
+<div class="row">
+   <div class="col-md-8 form-group">
+      <div class="flex mb-8 justify-between image-div">
+         <div class="w-32 h-32 mb-1 rounded-lg overflow-hidden relative bg-gray-100">
+            <label for="exampleInputEmail1">Select an image to Post</label>
+            <div class="picture-container">
+               <div class="picture">
+                  <img src="{% static 'web_app/images/image.png' %}" class="picture-src" id="wizardPicturePreview-1" title="" style="height: 100px; width: 100px;">
+                  <input type="file" onchange="openFile(event)" class="wizard-picture" data-count="1" name="pic" id="pic-1">
+                  <div class="d6_photo-delete" id="delete-logo-1" data-count="1">
+                     <i class="fa fa-times cancel-btn" data-count="1" id="delete_logo-1" aria-hidden="true"></i>
+                  </div>
+               </div>
+               <div class="picture">
+                  <img src="{% static 'web_app/images/image.png' %}" class="picture-src" id="wizardPicturePreview-2" title="" style="height: 100px; width: 100px;">
+                  <input type="file" onchange="openFile(event)" class="wizard-picture" data-count="2" name="pic" id="pic-2">
+                  <div class="d6_photo-delete" id="delete-logo-2" data-count="2">
+                     <i class="fa fa-times cancel-btn" data-count="2" aria-hidden="true"></i>
+                  </div>
+               </div>
+               <div class="picture">
+                  <img src="{% static 'web_app/images/image.png' %}" class="picture-src" id="wizardPicturePreview-3" title="" style="height: 100px; width: 100px;">
+                  <input type="file" onchange="openFile(event)" class="wizard-picture" data-count="3" name="pic" id="pic-3">
+                  <div class="d6_photo-delete" id="delete-logo-3" data-count="3">
+                     <i class="fa fa-times cancel-btn" data-count="3" aria-hidden="true"></i>
+                  </div>
+               </div>
+               <div class="picture">
+                  <img src="{% static 'web_app/images/image.png' %}" class="picture-src" id="wizardPicturePreview-4" title="" style="height: 100px; width: 100px;">
+                  <input type="file" onchange="openFile(event)" class="wizard-picture" data-count="4" name="pic" id="pic-4">
+                  <div class="d6_photo-delete" id="delete-logo-4" data-count="4">
+                     <i class="fa fa-times cancel-btn" data-count="4" aria-hidden="true"></i>
+                  </div>
+               </div>
+               <div class="picture">
+                  <img src="{% static 'web_app/images/image.png' %}" class="picture-src" id="wizardPicturePreview-5" title="" style="height: 100px; width: 100px;">
+                  <input type="file" onchange="openFile(event)" class="wizard-picture" data-count="5" name="pic" id="pic-5">
+                  <div class="d6_photo-delete" id="delete-logo-5" data-count="5">
+                     <i class="fa fa-times cancel-btn" data-count="5" aria-hidden="true"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   function readURL(input, count) {
+     if (input.files && input.files[0]) {
+       var reader = new FileReader();
+   
+       reader.onload = function(e) {
+         $('#wizardPicturePreview-'+count).attr('src', e.target.result);
+       };
+   
+       reader.readAsDataURL(input.files[0]);
+       $("#delete-logo-"+count).show();
+     }
+   }
+   
+   $(".wizard-picture").change(function() {
+       var count = $(this).data('count');
+     readURL(this, count);
+   
+   });
+   
+   $(document).ready(function () {
+       $(".d6_photo-delete").hide();
+       $(".d6_photo-delete").on('click', function () {
+           var count = $(this).data('count');
+           $('#wizardPicturePreview-'+count).attr("src", "{% static 'web_app/images/image.png' %}");
+           $("#pic-"+count).val("");
+           $("#delete-logo-"+count).hide();
+       })
+   });
+</script>
