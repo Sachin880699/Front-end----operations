@@ -1,69 +1,53 @@
+<input type="date" onchange="get_start_date_onchange(event)" class="border"
+                                     id="start_date" style="width: 345px; height: 42px; border-radius: 5px;"
+                                     name="start_date" required/>
+
+
+<input type="date" onchange="get_end_date_onchange(event)" class="border" id="end_date"
+                                     style="width: 345px; height: 42px; border-radius: 5px;"
+                                     name="end_date" required>
+
 <script>
-    $(function(){
-    var dtToday = new Date();
-    
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if(month < 10)
-        month = '0' + month.toString();
-    if(day < 10)
-        day = '0' + day.toString();
-    
-    var maxDate = year + '-' + month + '-' + day;
-    
-    $('#start_date').attr('min', maxDate);
-});
+      $(function () {
+          var dtToday = new Date();
+          var month = dtToday.getMonth() + 1;
+          var day = dtToday.getDate();
+          var year = dtToday.getFullYear();
+          if (month < 10)
+              month = '0' + month.toString();
+          if (day < 10)
+              day = '0' + day.toString();
+          var maxDate = year + '-' + month + '-' + day;
+          $('#start_date').attr('min', maxDate);
+      });
 
+      function get_start_date_onchange(event) {
+          var selectElement = event.target;
+          var end_date_variable = selectElement.value;
+      }
 
-
-function get_start_date_onchange(event) {
-var selectElement = event.target;
-var end_date_variable = selectElement.value;
-
-
-}
-
-
-function get_end_date_onchange(event,s) {
-var selectElement = event.target;
-var end_date = selectElement.value;
-var start_date_value = new Date($('#start_date').val())
-
-
-
-year = start_date_value.getFullYear();
-month = start_date_value.getMonth()+1;
-dt = start_date_value.getDate();
-
-if (dt < 10) {
-  dt = '0' + dt;
-}
-if (month < 10) {
-  month = '0' + month;
-}
-console.log(year+'-' + month + '-'+dt);
-var start_date = year+'-' + month + '-'+dt
-
-if(start_date == 'NaN-NaN-NaN')
-{
-    alert("Select Start date");
-    $("#end_date").val(null);
-    
-}
-else
-{
-
-if(start_date > end_date){
-
-alert("Sorry End Date Should Be Grater Than Start Date");
-$("#end_date").val(null);
-}
-
-}
-
-
-}
-
-
-</script>
+      function get_end_date_onchange(event, s) {
+          var selectElement = event.target;
+          var end_date = selectElement.value;
+          var start_date_value = new Date($('#start_date').val())
+          year = start_date_value.getFullYear();
+          month = start_date_value.getMonth() + 1;
+          dt = start_date_value.getDate();
+          if (dt < 10) {
+              dt = '0' + dt;
+          }
+          if (month < 10) {
+              month = '0' + month;
+          }
+          var start_date = year + '-' + month + '-' + dt
+          if (start_date == 'NaN-NaN-NaN') {
+              alert("Please Select Start Date");
+              $("#end_date").val(null);
+          } else {
+              if (start_date > end_date) {
+                  alert("End Date Should Be Greater Than Start Date");
+                  $("#end_date").val(null);
+              }
+          }
+      }
+  </script>
