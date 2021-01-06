@@ -1,0 +1,115 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<p class="counterW"><span class="scoreNow">3</span><span></span></p>
+
+
+<ul class="ratingW">
+  <li class="on"><a href="javascript:void(0);"><div class="star"></div></a></li>
+  <li class="on"><a href="javascript:void(0);"><div class="star"></div></a></li>
+  <li class="on"><a href="javascript:void(0);"><div class="star"></div></a></li>
+  <li><a href="javascript:void(0);"><div class="star"></div></a></li>
+  <li><a href="javascript:void(0);"><div class="star"></div></a></li>
+</ul>
+
+
+<style>
+.ratingW li {display:inline-block; margin:0px;}
+.ratingW li a {display:block; position:relative;
+}
+.star {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .9em;
+  margin-right: .9em;
+  margin-bottom: 1.2em;
+  border-right: .3em solid transparent;
+  border-bottom: .7em  solid #ddd;
+  border-left: .3em solid transparent;
+  /* Controlls the size of the stars. */
+  font-size: 24px;
+}
+.star:before, .star:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: .6em;
+  left: -1em;
+  border-right: 1em solid transparent;
+  border-bottom: .7em  solid #ddd;
+  border-left: 1em solid transparent;
+  -webkit-transform: rotate(-35deg);
+          transform: rotate(-35deg);
+}
+.star:after {
+  -webkit-transform: rotate(35deg);
+          transform: rotate(35deg);
+}
+.ratingW li.on .star {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .9em;
+  margin-right: .9em;
+  margin-bottom: 1.2em;
+  border-right: .3em solid transparent;
+  border-bottom: .7em  solid #F48F0A;
+  border-left: .3em solid transparent;
+  /* Controlls the size of the stars. */
+  font-size: 24px;
+}
+.ratingW li.on .star:before, .ratingW li.on .star:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: .6em;
+  left: -1em;
+  border-right: 1em solid transparent;
+  border-bottom: .7em  solid #F48F0A;
+  border-left: 1em solid transparent;
+  -webkit-transform: rotate(-35deg);
+          transform: rotate(-35deg);
+}
+.ratingW li.on .star:after {
+  -webkit-transform: rotate(35deg);
+          transform: rotate(35deg);
+}
+
+</style>
+
+
+<script>
+
+
+function ratingStar(star){
+	star.click(function(){
+		var stars = $('.ratingW').find('li')
+		stars.removeClass('on');
+		var thisIndex = $(this).parents('li').index();
+		for(var i=0; i <= thisIndex; i++){
+			stars.eq(i).addClass('on');
+		}
+    putScoreNow(thisIndex+1);
+	});
+}
+
+function putScoreNow(i){
+  $('.scoreNow').value = i;
+	data = $('.scoreNow').value = i;
+	d
+}
+
+
+$(function(){
+	if($('.ratingW').length > 0){
+			ratingStar($('.ratingW li a'));
+	}
+});
+
+</script>
