@@ -1,0 +1,32 @@
+<style>
+    .fb-share-button {
+    opacity: 1;
+    transform: scale(4.5);
+    transform-origin: top left;
+}
+</style>
+
+
+<meta property="og:url"           content="https://bed88e202617.ngrok.io/facebook_share" />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="Auto Facebook Post Testing Title" />
+<meta property="og:description"   content="Auto Facebook Post Sescription" />
+<meta property="og:image"         content="https://miro.medium.com/max/2800/0*xMaFF2hSXpf_kIfG.jpg" />
+
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your share button code -->
+<span style="height: 20px; width: 20px;">
+<div class="fb-share-button" 
+data-href="https://bed88e202617.ngrok.io/facebook_share" 
+data-layout="button_count">
+</div>
+</span>
