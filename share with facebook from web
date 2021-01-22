@@ -1,0 +1,11 @@
+<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://i.stack.imgur.com/jAH7T.png&amp;p[images][0]=https://cdn.britannica.com/77/170477-050-1C747EE3/Laptop-computer.jpg&amp;p[title]=This is title+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button">
+<img src="https://cdn.britannica.com/77/170477-050-1C747EE3/Laptop-computer.jpg" width="100px;" height="100px;" id = "share_link">
+Share
+</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<button type="button" onclick="button()">CLICK</button>
+<script>
+function button(){
+document.getElementById('share_link').click();
+}
+</script>
