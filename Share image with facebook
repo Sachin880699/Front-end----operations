@@ -1,32 +1,57 @@
 <style>
-    .fb-share-button {
-    opacity: 1;
-    transform: scale(4.5);
-    transform-origin: top left;
+body {
+  background: rgb(87, 207, 244);
+  color: #fff;
+  font-family: sans-serif;
+  margin: 0;
+  padding-top: 5em;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+.twitter-share, .facebook-share {
+  background: #fff;
+  color: rgb(87, 207, 244);
+  cursor: pointer;
+  display: inline-block;
+  padding: 1em 2em;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  
+  &:hover {
+    position: relative;
+    top: -1px;
+  }
+}
+
 </style>
 
 
-<meta property="og:url"           content="https://bed88e202617.ngrok.io/facebook_share" />
-<meta property="og:type"          content="website" />
-<meta property="og:title"         content="Auto Facebook Post Testing Title" />
-<meta property="og:description"   content="Auto Facebook Post Sescription" />
-<meta property="og:image"         content="https://miro.medium.com/max/2800/0*xMaFF2hSXpf_kIfG.jpg" />
 
-<div id="fb-root"></div>
+<span class="twitter-share" data-js="twitter-share">Share on Twitter</span>
+<span class="facebook-share" data-js="facebook-share">Share on Facebook</span>
+
+
+
+
 <script>
-(function(d, s, id) {
-var js, fjs = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) return;
-js = d.createElement(s); js.id = id;
-js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
-<!-- Your share button code -->
-<span style="height: 20px; width: 20px;">
-<div class="fb-share-button" 
-data-href="https://bed88e202617.ngrok.io/facebook_share" 
-data-layout="button_count">
-</div>
-</span>
+var twitterShare = document.querySelector('[data-js="twitter-share"]');
+
+twitterShare.onclick = function(e) {
+  e.preventDefault();
+  var twitterWindow = window.open('https://twitter.com/share?url=https://3fxtqy18kygf3on3bu39kh93-wpengine.netdna-ssl.com/wp-content/uploads/2019/11/UI-bugs.png' , 'twitter-popup', 'height=350,width=600');
+  if(twitterWindow.focus) { twitterWindow.focus(); }
+    return false;
+  }
+
+var facebookShare = document.querySelector('[data-js="facebook-share"]');
+
+facebookShare.onclick = function(e) {
+  e.preventDefault();
+  var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=https://245fee0db065.ngrok.io/media/activities/images/shimla1_u46E8H0.jpg', 'facebook-popup', 'height=350,width=600');
+  if(facebookWindow.focus) { facebookWindow.focus(); }
+    return false;
+}
+</script>
