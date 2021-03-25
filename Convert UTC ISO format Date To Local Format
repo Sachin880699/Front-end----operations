@@ -2,7 +2,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 
-
+========================================================================================================
 
 
 <span style="margin-left: 545px; color: grey; font-size: 15px;" class="date" data-date = "{{ rate_and_review.date|date:'d-m-Y H:i:s' }}"></span><br>
